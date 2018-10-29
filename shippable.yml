@@ -3,8 +3,16 @@ language: node_js
 node_js:
   - 8.9.4
 
+env:
+  global: 
+    - AWS_S3_BUCKET='s3://realchrisp.com'
+    - AWS_S3_REGION='us-east-1'
+    - secure: Dp2J8i9XaO62WST27hHmF0lf0/nvyDEFV6ANxU6MxUau9RlfojiXT7MjZLWGnhuke1HdOUwcaaqNngBtFUgTNJWFQpm4jPJbsYXnx8aUc8gIXoZt2KS0xsFErofdM1kJZPhrRKVIfR8SaqTBusRw+VHOUdWblXxJhTZAGcDjFilrH6Vg0z7JkFw1yyeS1k4BS6pYLKCRTp9LVNfuAPmFdg7fj6yLzxJRKEuft4Nd/CpWVqfchDM4cUeEdEo3k/UczfhDIZg8z/UMqphtiRMpIumDE3aLrSzIwwCZmVAQkIxE/LVu9t/MUbvuCF/NcI3KHDnUfSzuAn0H7T4Bv2Rt8Q==
+
 build:
   ci:
     # run Vue.js build
     - npm install
     - npm run build
+  on_success:
+    - aws s3 sync --acl public-read --delete $SHIPPABLE_BUILD_DIR $AWS_S3_BUCKET --region $AWS_S3_REGION
