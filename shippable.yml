@@ -6,4 +6,5 @@ node_js:
 build:
   ci:
     # run Vue.js build
+    - npm install
     - npm run build
