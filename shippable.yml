@@ -15,4 +15,4 @@ build:
     - npm install
     - npm run build
   on_success:
-    - aws s3 sync --acl public-read --delete $SHIPPABLE_BUILD_DIR $AWS_S3_BUCKET
+    - aws s3 sync --acl public-read --delete $SHIPPABLE_BUILD_DIR/dist/ $AWS_S3_BUCKET
