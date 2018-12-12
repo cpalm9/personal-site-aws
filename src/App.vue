@@ -8,7 +8,7 @@
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat @click="connectDialog = true">Connect</v-btn>
+        <v-btn flat @click="connectDialog = true">Connect!</v-btn>
         <v-btn flat href="https://github.com/cpalm9">GitHub</v-btn>
       </v-toolbar-items>
     </v-toolbar>
